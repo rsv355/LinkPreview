@@ -121,9 +121,9 @@ public class MainActivity extends AppCompatActivity {
                         Log.e("##img URL", "" + jObj.getString("Image"));
                         if(jObj.getString("Image").trim().startsWith("[")){
                             JSONArray imgArray = jObj.getJSONArray("Image");
-                            Glide.with(MainActivity.this).load(imgArray.get(0)).asGif().into(imgWebsite);
+                            Glide.with(MainActivity.this).load(imgArray.get(0)).into(imgWebsite);
                         }else {
-                            Glide.with(MainActivity.this).load(jObj.getString("Image")).asGif().into(imgWebsite);
+                            Glide.with(MainActivity.this).load(jObj.getString("Image")).into(imgWebsite);
                         }
 
 
