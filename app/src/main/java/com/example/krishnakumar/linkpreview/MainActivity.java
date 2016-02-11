@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private ProgressBar loader;
     private ImageView imgWebsite;
     private EditText etURL;
-    private TextView txtStatus,txtDomain,txtDescription;
+    private TextView txtStatus,txtDomain;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
                 if (jObj.has("Error")) {
                     txtStatus.setText(jObj.getString("Error"));
                     txtDomain.setVisibility(View.GONE);
-                    txtDescription.setVisibility(View.GONE);
+
                 } else {
                     if (jObj.has("Title")) {
                         txtStatus.setText(jObj.getString("Title"));
@@ -107,11 +107,6 @@ public class MainActivity extends AppCompatActivity {
                     if (jObj.has("DomainName")) {
                         txtDomain.setText(jObj.getString("DomainName"));
                         txtDomain.setVisibility(View.VISIBLE);
-                    }
-
-                    if (jObj.has("Description")) {
-                        txtDescription.setText(jObj.getString("Description"));
-                        txtDescription.setVisibility(View.VISIBLE);
                     }
 
                     if (jObj.has("Image")) {
@@ -144,6 +139,5 @@ public class MainActivity extends AppCompatActivity {
         etURL = (EditText)findViewById(R.id.etURL);
         txtStatus = (TextView)findViewById(R.id.txtStatus);
         txtDomain = (TextView)findViewById(R.id.txtDomain);
-        txtDescription= (TextView)findViewById(R.id.txtDescription);
     }
 }
