@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private ProgressBar loader;
     private ImageView imgWebsite;
     private EditText etURL;
+    private ImageView imgCancel;
     private TextView txtStatus,txtDomain;
 
     @Override
@@ -134,6 +135,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void init(){
+        imgCancel =  (ImageView)findViewById(R.id.imgCancel);
         imgWebsite = (ImageView)findViewById(R.id.imgWebsite);
         loader = (ProgressBar)findViewById(R.id.loader);
         etURL = (EditText)findViewById(R.id.etURL);

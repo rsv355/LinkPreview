@@ -9,7 +9,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.krishnakumar.linkpreview.MainActivity">
 
-    <LinearLayout
+    <FrameLayout
         android:id="@+id/linearImage"
         android:layout_alignParentTop="true"
         android:background="#d9d9d9"
@@ -21,7 +21,16 @@
         android:id="@+id/imgWebsite"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-    </LinearLayout>
+
+        <ImageView
+            android:padding="12dp"
+            android:layout_gravity="right"
+            android:src="@drawable/ic_navigation_cancel"
+            android:id="@+id/imgCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </FrameLayout>
 
     <LinearLayout
         android:orientation="vertical"
