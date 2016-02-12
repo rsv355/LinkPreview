@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText etURL;
     private ImageView imgCancel;
     private TextView txtStatus,txtDomain;
+    private callService call;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         init();
 
         loader.setVisibility(View.GONE);
+        call = new callService();
         etURL.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -51,7 +53,11 @@ public class MainActivity extends AppCompatActivity {
                 String word = s.toString();
                 if (word.contains(" ")) {
                     loader.setVisibility(View.VISIBLE);
-                    new callService().execute(s.toString());
+                    call = new callService();
+                    call.execute(s.toString());
+                }else{
+                    loader.setVisibility(View.GONE);
+                    call.cancel(true);
                 }
             }
 
@@ -76,8 +82,18 @@ public class MainActivity extends AppCompatActivity {
 
     private class callService extends AsyncTask<String,Void,JSONObject>{
         private String mainURL;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            imgWebsite.setImageResource(0);
+            txtStatus.setText("");
+            txtDomain.setText("");
+        }
+
         @Override
         protected JSONObject doInBackground(String... params) {
+
             mainURL = params[0];
             JSONObject obj = null;
             try {
