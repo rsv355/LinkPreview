@@ -60,6 +60,18 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+
+        imgCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loader.setVisibility(View.GONE);
+                etURL.setText("");
+                imgWebsite.setImageResource(0);
+                txtStatus.setText("");
+                txtDomain.setText("");
+            }
+        });
     }
 
     private class callService extends AsyncTask<String,Void,JSONObject>{
